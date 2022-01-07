@@ -13,7 +13,7 @@ body {
 
 .calculator {
   background-color: rgb(0, 0, 0);
-  border: solid 5px black;
+  border: solid 6px black;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
@@ -36,9 +36,11 @@ body {
   font-family: "Yellowtail", cursive;
   color: aliceblue;
   font-size: 30px;
+  margin-bottom: 15px;
 }
 
-.solar {
+.gap {
+  height: 20px;
   text-align: end;
   color: aliceblue;
   font-size: 20px;
@@ -46,23 +48,20 @@ body {
 }
 
 .solar-button {
-  height: 25px;
+  height: 32px;
   font-size: 19px;
   color: rgb(231, 226, 205);
-  width: 92px;
-  margin: 0 0 0 35px;
-  background-color: rgb(151, 99, 99);
+  width: 94px;
+  margin-left: 35px;
+  background-color: rgb(170, 152, 152);
 }
 
 .calc-screen {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  height: 50px;
-  width: 320px;
   text-align: end;
+  height: 50px;
+  width: 315px;
   font-family: monospace;
-  font-size: 30px;
+  font-size: 40px;
   color: aliceblue;
   background-color: rgb(88, 84, 107);
   border-radius: 10px;
@@ -75,7 +74,8 @@ body {
 
 .calc-button {
   font-family: "roboto", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
+  border: solid 1px #000000;
   border-radius: 5px;
   height: 80px;
   width: 80px;
@@ -105,6 +105,10 @@ body {
   background-color: #2100b6;
 }
 
+.zero {
+  width: 240px;
+}
+
 .clear {
   background-color: rgb(131, 8, 8);
   width: 160px;
@@ -116,4 +120,23 @@ body {
 
 .clear:active {
   background-color: rgb(77, 5, 5);
+}
+
+a {
+  color: aliceblue;
+}
+
+a:hover {
+  color: rgb(107, 109, 238);
+  cursor: grabbing;
+  transition: 0.5s;
+}
+
+.footer {
+  margin: 0;
+  color: aliceblue;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  font-family: "robto", sans-serif;
 }
