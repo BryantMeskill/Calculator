@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333232;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  background-color: rgb(0, 0, 0);
+  border: solid 5px black;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  animation: slide-in 1.4s;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    margin-right: 1000px;
+  }
+
+  to {
+    opacity: 1;
+    margin-right: 0px;
+  }
+}
+
+.header {
+  font-family: "Yellowtail", cursive;
+  color: aliceblue;
+  font-size: 30px;
+}
+
+.solar {
+  text-align: end;
+  color: aliceblue;
+  font-size: 20px;
+  font-family: "Yellowtail", cursive;
+}
+
+.solar-button {
+  height: 25px;
+  font-size: 19px;
+  color: rgb(231, 226, 205);
+  width: 92px;
+  margin: 0 0 0 35px;
+  background-color: rgb(151, 99, 99);
+}
+
+.calc-screen {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: 50px;
+  width: 320px;
+  text-align: end;
+  font-family: monospace;
+  font-size: 30px;
+  color: aliceblue;
+  background-color: rgb(88, 84, 107);
+  border-radius: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.calc-button {
+  font-family: "roboto", sans-serif;
+  font-size: 20px;
+  border-radius: 5px;
+  height: 80px;
+  width: 80px;
+  background-color: rgb(102, 102, 114);
+  color: aliceblue;
+}
+
+.calc-button:hover {
+  background-color: rgb(88, 88, 99);
+  border: groove 1px #ffffff;
+  box-shadow: 0px 0px 5px 1.5px rgb(255, 255, 255);
+}
+
+.calc-button:active {
+  background-color: rgb(71, 71, 80);
+}
+
+.calc-button:last-child {
+  background-color: #3700ff;
+}
+
+.calc-button:last-child:hover {
+  background-color: #2a01e0;
+}
+
+.calc-button:last-child:active {
+  background-color: #2100b6;
+}
+
+.clear {
+  background-color: rgb(131, 8, 8);
+  width: 160px;
+}
+
+.clear:hover {
+  background-color: rgb(99, 6, 6);
+}
+
+.clear:active {
+  background-color: rgb(77, 5, 5);
+}
