@@ -63,7 +63,7 @@ equalButton.addEventListener("click", function () {
     parseInt(storedValue),
     parseInt(currentValue),
     currentOperator
-  );
+  ).toFixed(2);
 
   if (isNaN(answer) || answer === undefined) {
     answer = "0";
@@ -71,6 +71,13 @@ equalButton.addEventListener("click", function () {
     currentValue = "";
     currentOperator = "";
     screen.textContent = "0";
+    return;
+  } else if (!isFinite(answer)) {
+    answer = "0";
+    storedValue = "";
+    currentValue = "";
+    currentOperator = "";
+    screen.textContent = "Nice try!";
     return;
   }
 
