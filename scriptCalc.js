@@ -3,10 +3,12 @@ const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.querySelector(".clear");
 const equalButton = document.querySelector(".equal");
 const screen = document.querySelector(".calc-screen");
+const backButton = document.querySelector(".backspace");
 
 let storedValue = "";
-let currentValue;
+let currentValue = "";
 let previousOperator;
+let currentOperator;
 
 function addition(a, b) {
   return a + b;
@@ -27,34 +29,60 @@ function division(a, b) {
 function operate(numberA, numberB, operator) {
   switch (operator) {
     case "+":
-      addition(numberA, numberB);
+      return addition(numberA, numberB);
 
     case "-":
-      subtraction(numberA, numberB);
+      return subtraction(numberA, numberB);
 
     case "*":
-      multiplication(numberA, numberB);
+      return multiplication(numberA, numberB);
 
     case "/":
-      division(numberA, numberB);
-
-      break;
+      return division(numberA, numberB);
   }
 }
 
 numButtons.forEach((number) => {
   number.addEventListener("click", function () {
-    storedValue += number.textContent;
-    screen.textContent = storedValue;
+    currentValue += number.textContent;
+    screen.textContent = currentValue;
   });
 });
 
 operatorButtons.forEach((operator) => {
   operator.addEventListener("click", function () {
-    storedValue = screen.textContent;
-    previousOperator = operator.textContent;
-    screen.textContent = 0;
+    storedValue = currentValue;
+    currentOperator = operator.textContent;
+    screen.textContent = currentOperator;
+    currentValue = "";
   });
 });
 
-equalButton.addEventListener("click", function () {});
+equalButton.addEventListener("click", function () {
+  let answer = operate(
+    parseInt(storedValue),
+    parseInt(currentValue),
+    currentOperator
+  );
+
+  if (isNaN(answer) || answer === undefined) {
+    answer = "0";
+    storedValue = "";
+    currentValue = "";
+    currentOperator = "";
+    screen.textContent = "0";
+    return;
+  }
+
+  screen.textContent = answer;
+  currentValue = answer;
+});
+
+clearButton.addEventListener("click", function () {
+  storedValue = "";
+  currentValue = "";
+  currentOperator = "";
+  screen.textContent = "0";
+});
+
+backButton.addEventListener("click", function () {});
