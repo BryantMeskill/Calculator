@@ -3,28 +3,35 @@ const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.querySelector(".clear");
 const equalButton = document.querySelector(".equal");
 const screen = document.querySelector(".calc-screen");
-const backButton = document.querySelector(".backspace");
 
 let storedValue = "";
 let currentValue = "";
-let previousOperator;
-let currentOperator;
+let currentOperator = "";
 
-function addition(a, b) {
+const addition = (a, b) => {
   return a + b;
-}
+};
 
-function subtraction(a, b) {
+const subtraction = (a, b) => {
   return a - b;
-}
+};
 
-function multiplication(a, b) {
+const multiplication = (a, b) => {
   return a * b;
-}
+};
 
-function division(a, b) {
+const division = (a, b) => {
   return a / b;
-}
+};
+
+const clearData = () => {
+  answer = "0";
+  storedValue = "";
+  currentValue = "";
+  currentOperator = "";
+  screen.textContent = "0";
+  return;
+};
 
 function operate(numberA, numberB, operator) {
   switch (operator) {
@@ -43,14 +50,21 @@ function operate(numberA, numberB, operator) {
 }
 
 numButtons.forEach((number) => {
-  number.addEventListener("click", function () {
+  number.addEventListener("click", () => {
     currentValue += number.textContent;
     screen.textContent = currentValue;
   });
 });
 
 operatorButtons.forEach((operator) => {
-  operator.addEventListener("click", function () {
+  operator.addEventListener("click", () => {
+    if (currentOperator != "") {
+      let answer = Math.round(
+        operate(parseInt(storedValue), parseInt(currentValue), currentOperator)
+      );
+      currentValue = answer;
+      screen.textContent = currentValue.toFixed(2);
+    }
     storedValue = currentValue;
     currentOperator = operator.textContent;
     screen.textContent = currentOperator;
@@ -58,38 +72,29 @@ operatorButtons.forEach((operator) => {
   });
 });
 
-equalButton.addEventListener("click", function () {
+equalButton.addEventListener("click", () => {
   let answer = operate(
     parseInt(storedValue),
     parseInt(currentValue),
     currentOperator
-  ).toFixed(2);
+  );
 
   if (isNaN(answer) || answer === undefined) {
-    answer = "0";
-    storedValue = "";
-    currentValue = "";
-    currentOperator = "";
-    screen.textContent = "0";
-    return;
-  } else if (!isFinite(answer)) {
-    answer = "0";
-    storedValue = "";
-    currentValue = "";
-    currentOperator = "";
-    screen.textContent = "Nice try!";
+    clearData();
     return;
   }
 
+  if (!isFinite(answer)) {
+    clearData();
+    return;
+  }
+
+  answer.toFixed(2);
   screen.textContent = answer;
   currentValue = answer;
-});
-
-clearButton.addEventListener("click", function () {
-  storedValue = "";
-  currentValue = "";
   currentOperator = "";
-  screen.textContent = "0";
 });
 
-backButton.addEventListener("click", function () {});
+clearButton.addEventListener("click", () => {
+  clearData();
+});
