@@ -33,6 +33,7 @@ body {
 }
 
 .header {
+  text-align: center;
   font-family: "Yellowtail", cursive;
   color: aliceblue;
   font-size: 30px;
