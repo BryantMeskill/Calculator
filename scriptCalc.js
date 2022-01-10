@@ -59,11 +59,35 @@ numButtons.forEach((number) => {
 operatorButtons.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (currentOperator != "") {
-      let answer = Math.round(
-        operate(parseInt(storedValue), parseInt(currentValue), currentOperator)
+      let answer = operate(
+        parseInt(storedValue),
+        parseInt(currentValue),
+        currentOperator
       );
+      if (isNaN(answer) || answer === undefined) {
+        clearData();
+        return;
+      }
+
+      if (!isFinite(answer)) {
+        clearData();
+        return;
+      }
+
+      if (!Number.isInteger(answer)) {
+        screen.textContent = answer.toFixed(2);
+        currentOperator = operator.textContent;
+        currentValue = answer.toFixed(2);
+        storedValue = currentValue;
+        currentValue = "";
+        return;
+      }
+      currentOperator = operator.textContent;
       currentValue = answer;
-      screen.textContent = currentValue.toFixed(2);
+      screen.textContent = currentValue;
+      storedValue = currentValue;
+      currentValue = "";
+      return;
     }
     storedValue = currentValue;
     currentOperator = operator.textContent;
@@ -89,7 +113,13 @@ equalButton.addEventListener("click", () => {
     return;
   }
 
-  answer.toFixed(2);
+  if (!Number.isInteger(answer)) {
+    screen.textContent = answer.toFixed(2);
+    currentValue = answer.toFixed(2);
+    currentOperator = "";
+    return;
+  }
+
   screen.textContent = answer;
   currentValue = answer;
   currentOperator = "";
