@@ -60,8 +60,8 @@ operatorButtons.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (currentOperator != "") {
       let answer = operate(
-        parseInt(storedValue),
-        parseInt(currentValue),
+        parseFloat(storedValue),
+        parseFloat(currentValue),
         currentOperator
       );
       if (isNaN(answer) || answer === undefined) {
@@ -77,7 +77,7 @@ operatorButtons.forEach((operator) => {
       if (!Number.isInteger(answer)) {
         screen.textContent = answer.toFixed(2);
         currentOperator = operator.textContent;
-        currentValue = answer.toFixed(2);
+        currentValue = answer;
         storedValue = currentValue;
         currentValue = "";
         return;
@@ -98,8 +98,8 @@ operatorButtons.forEach((operator) => {
 
 equalButton.addEventListener("click", () => {
   let answer = operate(
-    parseInt(storedValue),
-    parseInt(currentValue),
+    parseFloat(storedValue),
+    parseFloat(currentValue),
     currentOperator
   );
 
@@ -115,7 +115,7 @@ equalButton.addEventListener("click", () => {
 
   if (!Number.isInteger(answer)) {
     screen.textContent = answer.toFixed(2);
-    currentValue = answer.toFixed(2);
+    currentValue = answer;
     currentOperator = "";
     return;
   }
