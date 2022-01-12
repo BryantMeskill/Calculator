@@ -127,10 +127,19 @@ a {
   color: aliceblue;
 }
 
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 a:hover {
-  color: rgb(107, 109, 238);
-  cursor: grabbing;
-  transition: 0.5s;
+  color: rgb(42, 236, 172);
+  cursor: grab;
+  transition: 1s;
 }
 
 .footer {
@@ -140,4 +149,5 @@ a:hover {
   bottom: 0;
   text-align: center;
   font-family: "robto", sans-serif;
+  animation: opacity 3s;
 }
