@@ -33,7 +33,7 @@ const clearData = () => {
   return;
 };
 
-function operate(numberA, numberB, operator) {
+const operate = (numberA, numberB, operator) => {
   switch (operator) {
     case "+":
       return addition(numberA, numberB);
@@ -47,7 +47,7 @@ function operate(numberA, numberB, operator) {
     case "/":
       return division(numberA, numberB);
   }
-}
+};
 
 numButtons.forEach((number) => {
   number.addEventListener("click", () => {
@@ -64,6 +64,7 @@ operatorButtons.forEach((operator) => {
         parseFloat(currentValue),
         currentOperator
       );
+
       if (isNaN(answer) || answer === undefined) {
         clearData();
         return;
@@ -82,6 +83,7 @@ operatorButtons.forEach((operator) => {
         currentValue = "";
         return;
       }
+
       currentOperator = operator.textContent;
       currentValue = answer;
       screen.textContent = currentValue;
@@ -89,6 +91,7 @@ operatorButtons.forEach((operator) => {
       currentValue = "";
       return;
     }
+
     storedValue = currentValue;
     currentOperator = operator.textContent;
     screen.textContent = currentOperator;
